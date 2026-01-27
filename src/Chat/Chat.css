@@ -1355,78 +1355,80 @@ textarea {
 /* ================= MOBILE & TABLET RESPONSIVE ================= */
 /* Mobile Devices */
 @media (max-width: 480px) {
-    .journal-overlay {
+  .journal-overlay {
     padding: 5px;
   }
 
   .journal-modal {
     width: 95%;
     height: 95%;
-    padding: 10px;
-    border-radius: 15px;
+    padding: 8px;
+    border-radius: 12px;
   }
 
   .journal-header {
-    font-size: 1.2rem;
-    padding-bottom: 6px;
+    font-size: 1rem;
+    padding-bottom: 4px;
   }
 
   .journal-date {
-    font-size: 0.8rem;
-    top: 8%;
+    font-size: 0.75rem;
+    top: 6%;
     left: 50%;
     transform: translateX(-50%);
   }
 
   .close-btn {
-    width: 30px;
-    height: 30px;
-    font-size: 0.9rem;
+    width: 25px;
+    height: 25px;
+    font-size: 0.7rem;
   }
 
   .journal-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
   }
 
   .journal-card {
-    height: 150px;
-    font-size: 0.85rem;
-    padding: 8px;
+    height: 120px;
+    font-size: 0.75rem;
+    padding: 6px;
   }
 
   .add-entry-btn {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+    margin-right: 15px;
+    margin-bottom: 15px;
   }
 
   .entry-title-input {
-    font-size: 1rem;
-    padding: 8px;
+    font-size: 0.9rem;
+    padding: 6px;
   }
 
   .entry-textarea {
-    font-size: 0.9rem;
-    padding: 8px;
+    font-size: 0.85rem;
+    padding: 6px;
   }
 
   .save-btn,
   .cancel-btn,
   .edit-btn,
   .delete-btn {
-    font-size: 0.8rem;
-    padding: 5px 10px;
+    font-size: 0.7rem;
+    padding: 4px 8px;
   }
 
   .back-btn {
     width: 25px;
     height: 25px;
-    font-size: 0.8rem;
-    bottom: 8px;
-    left: 8px;
+    font-size: 0.7rem;
+    bottom: 5px;
+    left: 5px;
   }
-
+  
   .chat-bubble {
     font-size: 20px;
     padding: 12px;
@@ -1581,4 +1583,5 @@ textarea {
     max-width: 75%;
   }
 }
+
 
