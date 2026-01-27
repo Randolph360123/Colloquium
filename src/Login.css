@@ -1,0 +1,309 @@
+/* ⭐ Dark transparent background overlay */
+.swal2-container {
+  z-index: 9999999 !important;
+}
+
+.input-group {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  z-index: 2;
+  background-color: rgba(94, 111, 103, 0.85); /* matches the screenshot */
+}
+
+/* ⭐ The login popup box */
+.app {
+  background-color: #dcf7e9;  /* soft mint green */
+  height: 450px;
+  width: 620px;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  animation: popIn 0.25s ease-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers vertically */
+  align-items: center;     /* Centers horizontally */
+  gap: 20px;               /* Space between logo and buttons */
+}
+
+.ex-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #498A77;
+}
+
+.ex-btn:hover {
+  color: #2e5e50;
+  transform: scale(1.1);
+}
+
+/* ✅ Buttons */
+.button, .button_2,
+.button_3 {
+  border: none;
+  width: 200px;
+  padding: 15px 0;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 12px;  /* Remove extra margins, spacing now handled by gap */
+  color: white;
+  background-color: #3bbf6d;
+  text-align: center;
+  display: inline-block;
+}
+
+.button_4, .button_5 {
+  width: 260px; /* ✅ matches input width */
+  padding: 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  background-color: #3bbf6d;
+  color: white;
+  text-align: center;
+  display: block;
+}
+
+.button_4:hover, .button_5:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+  background-color: #024023;
+}
+
+.button:hover, .button_2:hover,
+.button_3:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+  background-color: #024023;
+}
+
+/* ✅ Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.app {
+  height: 550px; /* allows vertical growth */
+  min-height: 450px; /* keeps minimum shape */
+  padding: 50px 40px;
+}
+
+/* ✅ Logo inside popup */
+.logo {
+  max-width: 80px; /* slightly bigger for visibility */
+  width: 100%;
+  height: auto;
+  margin: 0; /* ✅ remove forced downward shift */
+}
+
+.input-box {
+  width: 260px;
+  font-size: 14px;
+  border: 2px solid #3bbf6d;
+  border-radius: 25px;
+  outline: none;
+  background-color: #58C174;
+  color: #81A297;
+}
+
+.email, .password {
+  font-size: 14px;
+  border: 2px solid #3bbf6d;
+  border-radius: 25px;
+  outline: none;
+  border-color: #58C174;
+  background-color: #ABF2CE;
+  color: #81A297;
+  width: 200px;
+  padding: 12px 14px;
+}
+
+#text {
+  color: #4DA185;
+}
+
+#lock_icon, #user_icon, #lock_icon2, #lock_icon3  {
+  align-items: center;
+  border: 2px solid #3bbf6d;
+  border-radius: 25px;
+  outline: none;
+  border-color: #58C174;
+  background-color: #ABF2CE;
+  color: #81A297;
+  width: 45px;
+  padding: 12px 14px;
+}
+
+.input-box::placeholder {
+  color: #81A297;
+}
+
+.divider {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #024023;
+  margin: 12px 0;
+  position: relative;
+}
+
+.ex-btn:hover {
+  transform: scale(0.6);
+  transition: 0.2s;
+  background-color: #C8EDDA;
+  border-radius: 50px;
+}
+
+#loginText {
+  color: #4DA185;
+  border-bottom: 0px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  height: 1px;
+  background: #b9d3c7;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.signup-text {
+  font-size: 12px;
+}
+
+.signup-link {
+  color: #0077cc;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/*Tablet & Small Laptops*/
+@media (max-width: 900px) {
+  .app {
+    width: 90%;
+    max-width: 520px;
+    height: auto;
+    padding: 40px 30px;
+  }
+
+  .logo {
+    max-width: 70px;
+  }
+}
+
+/*Mobile Devices*/
+@media (max-width: 600px) {
+  .app {
+    width: 95%;
+    max-width: 360px;
+    padding: 30px 20px;
+    border-radius: 16px;
+  }
+
+  .logo {
+    max-width: 60px;
+  }
+
+  /* Inputs */
+  .email, .password {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  #lock_icon, #user_icon, #lock_icon2, #lock_icon3 {
+    width: 40px;
+    padding: 10px;
+  }
+
+  /* Buttons */
+  .button,
+  .button_2,
+  .button_3 {
+    width: 100%;
+    font-size: 13px;
+    margin: 8px 0;
+  }
+
+  .button_4,
+  .button_5 {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .divider {
+    font-size: 11px;
+  }
+
+  .signup-text {
+    font-size: 11px;
+  }
+
+  .ex-btn {
+    font-size: 22px;
+  }
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 380px) {
+  .app {
+    padding: 25px 16px;
+  }
+
+  .logo {
+    max-width: 50px;
+  }
+
+  .button,
+  .button_2,
+  .button_3,
+  .button_4,
+  .button_5 {
+    font-size: 12px;
+    padding: 12px 0;
+  }
+}
+

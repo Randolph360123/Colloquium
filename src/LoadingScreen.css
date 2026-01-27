@@ -1,0 +1,17 @@
+/* src/LoadingScreen.css */
+.loading-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: 100%;
+  color: #A4C0B7;
+}
+
+.loading-logo {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
