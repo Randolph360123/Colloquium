@@ -215,68 +215,65 @@ const handleLogin = async () => {
                   const email = document.querySelector("input[placeholder='Email']").value.trim();
                   const password = document.querySelector("input[placeholder='Password']").value.trim();
                   const confirmPassword = document.querySelector("input[placeholder='Confirm Password']").value.trim();
-
-                  // 1️⃣ Final safety check
+              
                   if (!username || !email || !password || !confirmPassword) {
                     showWarning("Please fill out all fields.");
                     return;
                   }
-
-                  // 2️⃣ Email validation
+              
                   if (!emailPattern.test(email)) {
                     showError("Please enter a valid email address.");
                     return;
                   }
-
-                  // 3️⃣ Password rules
+              
                   if (password.length < 6) {
                     showWarning("Password must be at least 6 characters long.");
                     return;
                   }
-
+              
                   if (password !== confirmPassword) {
                     showError("Passwords do not match.");
                     return;
                   }
-
+              
+                  // ✅ Log payload for debugging
+                  const payload = { username, email: email.toLowerCase(), password, confirmPassword };
+                  console.log("SignUp Payload:", payload);
+              
                   try {
                     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signup`, {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ username, email, password }),
+                      body: JSON.stringify(payload),
                     });
-
+              
                     const data = await res.json().catch(() => null);
-
-                    // 4️⃣ SERVER-SIDE ERROR HANDLING
+                    console.log("Server response:", data); // 🔥 See why 400 happens
+              
                     if (!res.ok) {
                       if (res.status === 409) {
                         showError("This email is already registered.");
                         return;
                       }
-
                       if (res.status === 400) {
-                        showError("Invalid registration details.");
+                        showError(data?.message || "Invalid registration details.");
                         return;
                       }
-
                       showError(data?.message || "Sign-up failed. Please try again.");
                       return;
                     }
-
-                    // 5️⃣ SUCCESS
+              
                     showSuccess("Sign-up successful! You may now log in.");
                     setStage("loginForm");
-
+              
                   } catch (error) {
                     showError("Unable to connect to the server. Please try again later.");
                   }
                 }}
-
               >
                 Submit
               </button>
-
+              
               <p className="signup-text">
                 Already have an account?{" "}
                 <span className="signup-link" onClick={() => setStage("loginForm")}>
@@ -291,3 +288,4 @@ const handleLogin = async () => {
 }
 
 export default LoginPage;
+
