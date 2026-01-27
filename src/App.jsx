@@ -41,7 +41,7 @@ function App() {
           element={
             <LoginPage
               onLogin={() => setIsLoggedIn(true)}
-              isGuestMode={() => setIsGuestMode(true)}
+              onGuest={() => setIsGuestMode(true)}
             />
           }
         />
