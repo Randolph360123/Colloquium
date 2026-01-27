@@ -288,23 +288,16 @@ const saveChatToDatabase = async ({ user, sessionId, messages }) => {
   }
 };
 
-  useEffect(() => { setIsTyping(true);   /*WELCOME MESSAGE AFTER LOGIN*/ 
-    const welcome = 
-    "Hello! I'm Ataraxia, your AI companion. I’m here to help you understand and express your emotions. Note that I won't be able to give you medical reasonings, only just about your mental health and what I think about it. So, how are you feeling today?";   
-    let i = 0; 
-    let currentText = ""; 
-    setMessages([]);
-    const interval = setInterval(() => {
-      currentText += welcome[i]; i++; 
-      setMessages((prev) => { const updated = [...prev]; updated[0] = { sender: "ataraxia", text: currentText }; return updated; }); 
-      if (i >= welcome.length) {
-        clearInterval(interval); 
-        setIsTyping(false); 
-        } 
-      }, 
-      35); 
-      return () => clearInterval(interval); 
+    useEffect(() => {
+      setIsTyping(false); // No typing animation
+      setMessages([
+        {
+          sender: "ataraxia",
+          text: "Hello! I'm Ataraxia, your AI companion. I’m here to help you understand and express your emotions. Note that I won't be able to give you medical reasonings, only just about your mental health and what I think about it. So, how are you feeling today?"
+        }
+      ]);
     }, []);
+
     const loadChatHistory = async (userId) => {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat?userId=${userId}`);
   const chats = await res.json();
@@ -1424,4 +1417,5 @@ useEffect(() => {
       </div>
     );
   }
+
 export default Chat;
