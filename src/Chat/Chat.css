@@ -1355,6 +1355,78 @@ textarea {
 /* ================= MOBILE & TABLET RESPONSIVE ================= */
 /* Mobile Devices */
 @media (max-width: 480px) {
+    .journal-overlay {
+    padding: 5px;
+  }
+
+  .journal-modal {
+    width: 95%;
+    height: 95%;
+    padding: 10px;
+    border-radius: 15px;
+  }
+
+  .journal-header {
+    font-size: 1.2rem;
+    padding-bottom: 6px;
+  }
+
+  .journal-date {
+    font-size: 0.8rem;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .close-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .journal-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .journal-card {
+    height: 150px;
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .add-entry-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+
+  .entry-title-input {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  .entry-textarea {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .save-btn,
+  .cancel-btn,
+  .edit-btn,
+  .delete-btn {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .back-btn {
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+    bottom: 8px;
+    left: 8px;
+  }
+
   .chat-bubble {
     font-size: 20px;
     padding: 12px;
@@ -1509,3 +1581,4 @@ textarea {
     max-width: 75%;
   }
 }
+
