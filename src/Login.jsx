@@ -1,12 +1,9 @@
 // Login.jsx
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Swal from 'sweetalert2';
-
-const navigate = useNavigate();
 
 const showError = (message) => {
   Swal.fire({
@@ -78,11 +75,12 @@ const handleLogin = async () => {
     const data = await response.json();
 
     showSuccess("Login successful!");
+
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
+
     onLogin();
-    navigate("/"); // ✅ This redirects to Chat.jsx
-    
+
   } catch (error) {
     showError("Unable to connect to the server. Please check your connection.");
   }
@@ -132,14 +130,14 @@ const handleLogin = async () => {
               className="loading-logo"
             />
             <button className="button_2" onClick={() => setStage("loginForm")}>Login</button>
-              <button className="button_3" onClick={() => {
-                showSuccess("You are now logged in as a Guest.");
-                onLogin();     // this sets isLoggedIn = true
-                onGuest();     // this sets isGuestMode = true
-                navigate("/"); // ✅ Redirects to Chat.jsx immediately
-              }}>
-                Login as Guest
-              </button>
+            <button className="button_3" onClick={() => {
+              showSuccess("You are now logged in as a Guest.");
+              onLogin(); // Go to main page
+            }}
+          >
+            Login as Guest
+          </button>
+
             </center>
           </div>
         </div>
@@ -217,65 +215,68 @@ const handleLogin = async () => {
                   const email = document.querySelector("input[placeholder='Email']").value.trim();
                   const password = document.querySelector("input[placeholder='Password']").value.trim();
                   const confirmPassword = document.querySelector("input[placeholder='Confirm Password']").value.trim();
-              
+
+                  // 1️⃣ Final safety check
                   if (!username || !email || !password || !confirmPassword) {
                     showWarning("Please fill out all fields.");
                     return;
                   }
-              
+
+                  // 2️⃣ Email validation
                   if (!emailPattern.test(email)) {
                     showError("Please enter a valid email address.");
                     return;
                   }
-              
+
+                  // 3️⃣ Password rules
                   if (password.length < 6) {
                     showWarning("Password must be at least 6 characters long.");
                     return;
                   }
-              
+
                   if (password !== confirmPassword) {
                     showError("Passwords do not match.");
                     return;
                   }
-              
-                  // ✅ Log payload for debugging
-                  const payload = { username, email: email.toLowerCase(), password, confirmPassword };
-                  console.log("SignUp Payload:", payload);
-              
+
                   try {
-                    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signup`, {
+                    const res = await fetch("http://localhost:5000/api/auth/signup", {
                       method: "POST",
                       headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify(payload),
+                      body: JSON.stringify({ username, email, password }),
                     });
-              
+
                     const data = await res.json().catch(() => null);
-                    console.log("Server response:", data); // 🔥 See why 400 happens
-              
+
+                    // 4️⃣ SERVER-SIDE ERROR HANDLING
                     if (!res.ok) {
                       if (res.status === 409) {
                         showError("This email is already registered.");
                         return;
                       }
+
                       if (res.status === 400) {
-                        showError(data?.message || "Invalid registration details.");
+                        showError("Invalid registration details.");
                         return;
                       }
+
                       showError(data?.message || "Sign-up failed. Please try again.");
                       return;
                     }
-              
+
+                    // 5️⃣ SUCCESS
                     showSuccess("Sign-up successful! You may now log in.");
                     setStage("loginForm");
-              
+
                   } catch (error) {
                     showError("Unable to connect to the server. Please try again later.");
                   }
                 }}
+
               >
                 Submit
               </button>
-              
+
               <p className="signup-text">
                 Already have an account?{" "}
                 <span className="signup-link" onClick={() => setStage("loginForm")}>
@@ -290,6 +291,3 @@ const handleLogin = async () => {
 }
 
 export default LoginPage;
-
-
-
