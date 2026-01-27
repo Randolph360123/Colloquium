@@ -130,14 +130,13 @@ const handleLogin = async () => {
               className="loading-logo"
             />
             <button className="button_2" onClick={() => setStage("loginForm")}>Login</button>
-            <button className="button_3" onClick={() => {
-              showSuccess("You are now logged in as a Guest.");
-              onLogin(); // Go to main page
-            }}
-          >
-            Login as Guest
-          </button>
-
+              <button className="button_3" onClick={() => {
+                showSuccess("You are now logged in as a Guest.");
+                onLogin();     // this sets isLoggedIn = true
+                onGuest();     // this sets isGuestMode = true
+              }}>
+                Login as Guest
+              </button>
             </center>
           </div>
         </div>
@@ -288,4 +287,5 @@ const handleLogin = async () => {
 }
 
 export default LoginPage;
+
 
