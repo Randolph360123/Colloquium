@@ -133,6 +133,7 @@ const handleLogin = async () => {
             <button className="button_3" onClick={() => {
               showSuccess("You are now logged in as a Guest.");
               onLogin(); // Go to main page
+              isGuestMode();
             }}
           >
             Login as Guest
@@ -291,3 +292,4 @@ const handleLogin = async () => {
 }
 
 export default LoginPage;
+
