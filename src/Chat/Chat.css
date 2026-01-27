@@ -1356,12 +1356,12 @@ textarea {
 /* Mobile Devices */
 @media (max-width: 480px) {
   .journal-overlay {
-    padding: 5px;
+    padding: 2px;
   }
 
   .journal-modal {
     width: 95%;
-    height: 95%;
+    height: 85%;
     padding: 8px;
     border-radius: 12px;
   }
@@ -1583,5 +1583,6 @@ textarea {
     max-width: 75%;
   }
 }
+
 
 
