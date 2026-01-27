@@ -1,9 +1,12 @@
 // Login.jsx
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import "./App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Swal from 'sweetalert2';
+
+const navigate = useNavigate();
 
 const showError = (message) => {
   Swal.fire({
@@ -75,12 +78,11 @@ const handleLogin = async () => {
     const data = await response.json();
 
     showSuccess("Login successful!");
-
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
-
     onLogin();
-
+    navigate("/"); // ✅ This redirects to Chat.jsx
+    
   } catch (error) {
     showError("Unable to connect to the server. Please check your connection.");
   }
@@ -134,6 +136,7 @@ const handleLogin = async () => {
                 showSuccess("You are now logged in as a Guest.");
                 onLogin();     // this sets isLoggedIn = true
                 onGuest();     // this sets isGuestMode = true
+                navigate("/"); // ✅ Redirects to Chat.jsx immediately
               }}>
                 Login as Guest
               </button>
@@ -287,5 +290,6 @@ const handleLogin = async () => {
 }
 
 export default LoginPage;
+
 
 
