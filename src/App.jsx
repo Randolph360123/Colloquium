@@ -10,7 +10,7 @@ function App() {
     useEffect(() => {
     // Check if there’s a saved token or guest session
     const token = localStorage.getItem("token");
-    const user = localStorage.getItem("user");
+    const user = JSON.parse(localStorage.getItem("user"));
 
   if (user?.isGuest) {
     // Auto-logout guests on refresh
