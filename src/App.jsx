@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
-import LoginPage from "./Login.jsx";
-import Chat from "./Chat/Chat.jsx";
+import LoginPage from "./Login";
+import Chat from "./Chat/Chat";
 import "./LoadingScreen.css";
 
 function App() {
